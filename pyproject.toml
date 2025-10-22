@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yourday"
+version = "0.1.0"
+description = "Daily summary automation agent using Strands SDK"
+requires-python = ">=3.10"
+dependencies = [
+    "strands-agents>=1.13.0,<2.0.0",
+    "boto3>=1.26.0,<2.0.0",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-mock>=3.11.0",
+    "black>=23.7.0",
+    "mypy>=1.5.0",
+]
+
+[project.scripts]
+yourday = "yourday.cli:main"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
